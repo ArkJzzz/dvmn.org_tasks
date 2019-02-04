@@ -81,11 +81,9 @@ def run_robot(commands, room_map):
         current_position = new_position
     return movement_history
 
-
 def is_wall(position, ascii_map):
     map_array = turn_ascii_map_into_array(ascii_map)
     return map_array[position[0]][position[1]] == '█'
-
 
 def print_map(movement_history, room_map):
     if not movement_history:
@@ -97,16 +95,13 @@ def print_map(movement_history, room_map):
     map_with_footprints_and_robot = get_map_with_robot(robot_position, map_with_footprints)
     print(map_with_footprints_and_robot)
 
-
 def get_map_with_footprints(movement_history, room_map):
     footprint_mark = '·'
     return add_symbol_to_ascii_map(ascii_map=room_map, symbol=footprint_mark, points=movement_history)
 
-
 def get_map_with_robot(robot_position, room_map):
     robot_mark = '◆'
     return add_symbol_to_ascii_map(ascii_map=room_map, symbol=robot_mark, points=[robot_position])
-
 
 def add_symbol_to_ascii_map(ascii_map, symbol, points):
     map_array = turn_ascii_map_into_array(ascii_map)
@@ -114,10 +109,8 @@ def add_symbol_to_ascii_map(ascii_map, symbol, points):
         map_array[point_x][point_y] = symbol
     return turn_array_into_ascii_map(map_array)
 
-
 def turn_ascii_map_into_array(ascii_map):
     return [list(map_line) for map_line in ascii_map.split('\n') if map_line.strip()]
-
 
 def turn_array_into_ascii_map(map_array):
     return '\n'.join([''.join(map_line) for map_line in map_array])
